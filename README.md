@@ -27,9 +27,9 @@
 - [Result Analysis](#result-analysis)
   - [PCA Effect](#pca-effect)
   - [Advanced vs. Base Model](#advanced-vs-base-model)
-- [Generated Lyrics Analysis](#generated-lyrics-analysis)
+  - [Generated Lyrics Analysis](#generated-lyrics-analysis)
 - [Analysis and Conclusion: Impact of Melody and Seed Words on Generated Lyrics](#analysis-and-conclusion-impact-of-melody-and-seed-words-on-generated-lyrics)
-- [Conclusion](#conclusion)
+  - [Conclusion](#conclusion)
 
 ## Introduction
 In this project, the primary goal is to explore the automatic generation of song lyrics based on provided melodies using deep learning techniques. The core idea is to combine the temporal dependencies in lyrics with the rich musical information embedded in melodies, such as rhythm, pitch, and instrumentation. The task is approached using Recurrent Neural Networks (RNNs), particularly Long Short-Term Memory (LSTM) units, which are well-suited for sequential data. To further enhance the quality of the generated lyrics, we utilize an attention mechanism in advanced models to dynamically focus on relevant parts of the melody and lyrics sequences during the generation process.
