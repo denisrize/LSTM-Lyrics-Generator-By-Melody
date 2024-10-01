@@ -1,4 +1,13 @@
-# RNN-Lyrics-Generator-By-Melody
+<table>
+  <tr>
+    <td>
+      <h1>LSTM-Lyrics-Generator-By-Melody</h1>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/e6a20f77-e9c4-40b4-b1d1-189768c6c93d" alt="LSTM generating lyrics" width="300">
+    </td>
+  </tr>
+</table>
 
 ## Introduction
 In this project, the primary goal is to explore the automatic generation of song lyrics based on provided melodies using deep learning techniques. The core idea is to combine the temporal dependencies in lyrics with the rich musical information embedded in melodies, such as rhythm, pitch, and instrumentation. The task is approached using Recurrent Neural Networks (RNNs), particularly Long Short-Term Memory (LSTM) units, which are well-suited for sequential data. To further enhance the quality of the generated lyrics, we utilize an attention mechanism in advanced models to dynamically focus on relevant parts of the melody and lyrics sequences during the generation process.
@@ -24,7 +33,11 @@ We extracted the following melody features from MIDI files:
 These features provide the model with crucial information about the musical structure, which helps in generating lyrics that are more rhythmically and harmonically aligned with the melody.
 
 ### Dimensionality Reduction using PCA
-Given the high dimensionality of the melody features (527 features per token), Principal Component Analysis (PCA) is employed to reduce the feature space. By selecting the first 100 principal components, we preserve around 90% of the variance in the data while significantly reducing the model’s input size. This helps the model focus on the essential aspects of the melody while improving training efficiency and reducing overfitting.
+Given the high dimensionality of the melody features (527 features per token), Principal Component Analysis (PCA) is employed to reduce the feature space. By selecting the first 100 principal components, we preserve around 90% of the variance in the data while significantly reducing the model’s input size. This helps the model focus on the essential aspects of the melody while improving training efficiency and reducing overfitting. 
+In the following plots, you can see the reduced song features on the left, and reduced instrument features on the right plot.
+
+![Picture1](https://github.com/user-attachments/assets/8bedc3bf-866a-49cd-8acb-4375018e34f0)
+
 
 ### Model Architectures
 
@@ -37,13 +50,35 @@ In this variant, an attention layer is added after the LSTM layers to allow the 
 ### Training Phase
 The model is trained using the cross-entropy loss function to predict the next word in the lyrics sequence, given the current word and the corresponding melody features. The training dataset consists of 600 songs, with 10% used for validation.
 
-Key training details include:
+Key hyperparameters include:
 - **Batch sizes:** 32 and 64.
 - **Hidden dimensions:** 64 and 128.
 - **Max sequence lengths:** 32 and 64 tokens.
 - **Learning rates:** 0.001 and 0.0001.
 
 Regularization techniques such as dropout (to prevent overfitting) and early stopping (to halt training if validation accuracy does not improve) are applied. Additionally, Layer Normalization and the attention mechanism are used to stabilize training and improve performance.
+
+Base Model – Melody features approach # 1
+Num Layers: 1, Hidden Dim: 64, Dropout = 0.1, Loss: CrossEntropyLoss, LR: 0.001, Weight Decay: 0.0001, Optimizer: Adam, Max Sequence Length: 32, Batchsize = 64
+
+![basemodelapp1](https://github.com/user-attachments/assets/5b468caf-0ae0-4a54-902e-ae1e261d7fe7)
+
+
+Base Model – Melody features approach # 2
+Num Layers: 1, Hidden Dim: 64, Dropout = 0.1, Loss: CrossEntropyLoss, LR: 0.001, Weight Decay: 0.0001, Optimizer: Adam, Max Sequence Length: 32, Batchsize = 64
+
+![basemodelapp2](https://github.com/user-attachments/assets/b8f3793a-2d98-47af-97b1-386e965d81f0)
+
+Advanced Model – Melody features approach # 1
+Num Layers: 2, Hidden Dim: 64, Dropout = 0.2, Loss: CrossEntropyLoss, LR: 0.001, Weight Decay: 0.0001, Optimizer: Adam, Max Sequence Length: 32, Batchsize = 64
+
+![advancemodelapp1](https://github.com/user-attachments/assets/e577bdee-0a0e-434c-b1cf-99efa637c8c6)
+
+Advanced Model – Melody features approach # 2
+Num Layers: 2, Hidden Dim: 64, Dropout = 0.2, Loss: CrossEntropyLoss, LR: 0.001, Weight Decay: 0.0001, Optimizer: Adam, Max Sequence Length: 32, Batchsize = 64
+
+![advancemodelapp2](https://github.com/user-attachments/assets/eba5bd5e-ab93-4c34-aaab-c5328118d324)
+
 
 ## Evaluation Process
 
@@ -66,6 +101,17 @@ To overcome this limitation, we use a broader set of evaluation metrics that cap
 - **Why it’s useful:** In the context of generating song lyrics, it’s vital that the lyrics are not only grammatically correct but also make sense as a whole. Semantic coherence ensures that the generated lyrics have logical consistency, essential for creating lyrics that sound natural and fit within the context of the song.
 
 ## Result Analysis
+The result for each of the model architecture and melody representation (best are in bold):
+
+![Screenshot 2024-10-01 113942](https://github.com/user-attachments/assets/454a13cd-a513-467c-bc7e-01eeebd3a04a)
+
+Results Visualization -
+
+![cosine_ngrams](https://github.com/user-attachments/assets/1094332b-4811-42e0-8c96-83de6a9f6caa)
+
+
+![perplexity_semantic](https://github.com/user-attachments/assets/a1b8e76b-b8de-4781-a9b8-9b108b425aa3)
+
 
 ### PCA Effect:
 - Performing PCA on melody features improves the perplexity for both models, indicating better prediction capabilities.
