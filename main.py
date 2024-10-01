@@ -28,7 +28,7 @@ from nltk.translate.bleu_score import sentence_bleu
 from gensim.models import KeyedVectors
 
 from preprocess_data import *
-from melody_feature_extraction import extract_features_and_concatenate, reduce_features_with_pca
+from feature_extraction import extract_features_and_concatenate, reduce_features_with_pca
 from models_and_dataset import *
 from config import *
 from evaluation import evaluate_generated_lyrics, generate_lyrics_for_songs, save_generated_lyrics_to_file
