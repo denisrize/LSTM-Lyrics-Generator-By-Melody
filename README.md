@@ -157,7 +157,7 @@ Results Visualization -
 
 These insights suggest that the Advanced model with PCA is the most effective configuration, offering the best balance between predictive confidence and semantic coherence.
 
-## Generated Lyrics Analysis
+### Generated Lyrics Analysis
 
 We won't include all the generated lyrics in this README as the output is quite extensive, but let's take a look at a few examples:
 
