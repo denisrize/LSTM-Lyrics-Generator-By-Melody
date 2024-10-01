@@ -15,3 +15,12 @@ GENERATED_LYRICS_PATH = "generated_lyrics.txt"
 
 # Specify the path to the pre-trained Word2Vec model
 WORD_TO_VEC_PATH = './GoogleNews-vectors-negative300.bin'
+
+# Specify LSTM regular and advanced hyperparameter values
+HIDDEN_DIM_REGULAR = 1024
+NUM_LAYERS_REGULAR = 1
+DROPOUT_REGULAR = 0.1
+
+HIDDEN_DIM_ADVANCE = 1024
+NUM_LAYERS_ADVANCE = 2
+DROPOUT_ADVANCE = 0.2
